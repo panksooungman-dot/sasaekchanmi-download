@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>사색찬미한정식 — 앱 다운로드</title>
+<meta name="description" content="사색찬미한정식 공식 안드로이드 앱 다운로드">
+<meta name="theme-color" content="#FBF7F0">
+<style>
+  :root{
+    --ivory:#FBF7F0; --beige:#EBE2D4; --line:#D6CABA;
+    --brown:#4A3A2C; --brown-l:#8C7A69; --accent:#7A5C3E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--ivory); color:var(--brown);
+    font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",
+      "Malgun Gothic","맑은 고딕",sans-serif;
+    min-height:100vh; display:flex; align-items:center; justify-content:center;
+    padding:24px 18px;
+  }
+  .card{
+    width:100%; max-width:430px; background:var(--ivory);
+    border:1.5px solid var(--line); border-radius:6px;
+    padding:38px 26px 30px; position:relative;
+  }
+  .card::before{
+    content:''; position:absolute; inset:9px;
+    border:1px solid var(--beige); border-radius:3px; pointer-events:none;
+  }
+  .inner{position:relative; z-index:1; text-align:center;}
+
+  .deco{display:flex; align-items:center; justify-content:center; gap:9px; margin-bottom:22px;}
+  .deco i{display:block; width:52px; height:1.5px; background:var(--accent);}
+  .deco b{display:block; width:7px; height:7px; border-radius:50%; background:var(--accent);}
+
+  h1{
+    font-size:23px; font-weight:800; letter-spacing:-.4px;
+    margin:0 0 6px;
+  }
+  .sub{font-size:13px; color:var(--brown-l); margin:0 0 26px; letter-spacing:.2px;}
+
+  .qrbox{
+    border:1.5px solid var(--line); border-radius:4px;
+    padding:16px; display:inline-block; background:#fff;
+  }
+  .qrbox img{display:block; width:210px; height:210px; image-rendering:pixelated;}
+
+  .hint{font-size:13px; color:var(--accent); font-weight:700; margin:16px 0 22px;}
+
+  .btn{
+    display:block; width:100%; padding:17px; border-radius:4px;
+    background:var(--accent); color:#fff; text-decoration:none;
+    font-size:15px; font-weight:800; letter-spacing:-.2px;
+    border:none; cursor:pointer; transition:filter .15s;
+  }
+  .btn:active{filter:brightness(.9);}
+  .btn-note{font-size:11.5px; color:var(--brown-l); margin:10px 0 0;}
+
+  .divider{height:1px; background:var(--line); margin:26px 0 22px; border:0;}
+
+  ol{
+    text-align:left; margin:0 0 22px; padding:0; list-style:none;
+    counter-reset:s;
+  }
+  ol li{
+    counter-increment:s; position:relative; padding-left:34px;
+    margin-bottom:15px; font-size:13.5px; line-height:1.55;
+  }
+  ol li::before{
+    content:counter(s); position:absolute; left:0; top:1px;
+    width:22px; height:22px; border-radius:50%; background:var(--accent);
+    color:#fff; font-size:11.5px; font-weight:700;
+    display:flex; align-items:center; justify-content:center;
+  }
+  ol li b{font-weight:800; display:block; margin-bottom:2px; font-size:14px;}
+  ol li span{color:var(--brown-l); font-size:12.5px;}
+
+  .warn{
+    background:rgba(235,226,212,.42); border-left:3px solid var(--accent);
+    border-radius:3px; padding:13px 15px; text-align:left;
+    font-size:12.5px; line-height:1.65; color:var(--brown-l); margin-bottom:22px;
+  }
+  .warn b{color:var(--brown);}
+
+  .shop{font-size:12px; color:var(--brown-l); line-height:1.85;}
+  .shop b{display:block; color:var(--brown); font-size:13.5px; font-weight:800; margin-bottom:4px;}
+  .shop a{color:var(--accent); text-decoration:none; font-weight:700;}
+
+  .ver{margin-top:20px; font-size:10.5px; color:var(--beige); letter-spacing:.4px;}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="inner">
+
+    <div class="deco"><i></i><b></b><i></i></div>
+
+    <h1>사색찬미한정식</h1>
+    <p class="sub">모바일 앱 다운로드</p>
+
+    <div class="qrbox">
+      <img src="qr.png" alt="앱 다운로드 QR 코드" width="210" height="210">
+    </div>
+
+    <p class="hint">휴대폰 카메라로 스캔하세요</p>
+
+    <a class="btn" id="dl" href="#">앱 다운로드</a>
+    <p class="btn-note">Android 전용 · 약 59MB</p>
+
+    <hr class="divider">
+
+    <ol>
+      <li><b>QR 코드 스캔</b><span>휴대폰 카메라로 비춰주세요</span></li>
+      <li><b>다운로드 선택</b><span>안내에 따라 내려받기</span></li>
+      <li><b>‘허용’ 한 번 누르기</b><span>설치 완료까지 약 30초</span></li>
+    </ol>
+
+    <div class="warn">
+      <b>설치 시 확인 창이 한 번 뜹니다.</b><br>
+      Play 스토어에 없는 앱이라 안드로이드가 확인을 요청합니다.
+      <b>‘허용’</b>을 눌러주시면 정상적으로 설치됩니다.
+    </div>
+
+    <div class="border"></div>
+
+    <div class="shop">
+      <b>사색찬미한정식</b>
+      경기 파주시 광탄면 만장산로 363, 1층<br>
+      <a href="tel:0319458004">031-945-8004</a><br>
+      매일 10:00 - 20:00 · 라스트오더 18:30 · 연중무휴
+    </div>
+
+    <div class="ver">v1.0.0</div>
+
+  </div>
+</div>
+
+<script>
+  // APK 실제 주소
+  var APK = "https://github.com/panksooungman-dot/sasaekchanmi-download/releases/download/v1.0.0/sasaekchanmi.apk";
+
+  var isAndroid = /android/i.test(navigator.userAgent);
+  var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+              (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+  var btn = document.getElementById('dl');
+  btn.href = APK;
+  btn.target = '_blank';
+
+  if (isIOS) {
+    btn.textContent = 'iPhone은 지원되지 않습니다';
+    btn.style.background = '#B8AC9C';
+    btn.style.pointerEvents = 'none';
+    var n = document.querySelector('.btn-note');
+    if (n) n.textContent = 'Android 휴대폰에서 열어주세요';
+  }
+  // 안드로이드가 아니면 버튼 문구만 안내
+  else if (!isAndroid) {
+    btn.textContent = 'APK 내려받기';
+  }
+</script>
+</body>
+</html>
