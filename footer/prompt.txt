@@ -1,0 +1,145 @@
+사색찬미한정식 홈페이지(Next.js) 푸터에 "모바일 앱 다운로드" 칸을 추가해줘.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+■ 0단계 : 먼저 조사 (수정하지 말고 보고만)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1) 푸터 컴포넌트 파일을 찾아라.
+   grep -rl "오시는 길" components/ app/ src/ 2>/dev/null
+   결과가 여러 개면 가장 그럴듯한 것 1개만 골라라.
+
+2) 그 파일을 읽고 아래를 확인해서 나에게 보고해라.
+   - 파일 경로
+   - <Image> 를 쓰는지 <img> 를 쓰는지
+   - 푸터 영업시간 문구가 정확히 무엇인지
+   - grid 클래스가 정확히 무엇인지
+   - 로고 아래 소개 문구가 무엇인지
+   - 예약 버튼(네이버 예약하기 / 예약 문의)이 있는지
+
+   ※ 내가 알려준 값과 다르면 내 값을 따르지 말고
+     "실제 파일은 이렇습니다" 라고 알려줘라. 실제 파일이 우선이다.
+   ※ 이 보고를 한 뒤 잠깐 멈춰라.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+■ 1단계 : 절대 하면 안 되는 것
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+- 기존 문구·링크·숫자를 바꾸지 마라 (영업시간, 주소, 전화번호, 네이버 링크 3개).
+- 로고 이미지 설정을 바꾸지 마라.
+- 배경 구름 SVG 패턴을 바꾸지 마라.
+- 저작권 문구를 바꾸지 마라.
+- import 문을 바꾸지 마라.
+- 푸터 파일 1개만 수정한다. 다른 컴포넌트·페이지를 건드리지 마라.
+- 새 패키지를 설치하지 마라.
+- 커밋하지 마라. (내가 확인 후 직접 커밋한다)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+■ 2단계 : 수정 — 딱 두 곳만
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+【수정 1】 grid 칸수
+
+아래 줄을 찾아서
+    <div className="grid gap-10 sm:grid-cols-2">
+이렇게 바꾼다
+    <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+
+※ sm:grid-cols-3 로 하지 마라. 태블릿 폭(640~1023px)에서 칸이 170px까지
+  좁아져 버튼이 두 줄로 깨진다. 반드시 lg: 를 쓴다. (실제 렌더링으로 확인함)
+
+
+【수정 2】 세 번째 칸 추가
+
+"오시는 길" 칸이 끝나는 </div> 바로 뒤, grid 컨테이너가 닫히기 전에
+아래 블록을 넣는다.
+
+          {/* ── 3. 모바일 앱 ── */}
+          <div className="sm:col-span-2 lg:col-span-1">
+            <p className="text-sm font-semibold text-foreground">모바일 앱</p>
+            <p className="mt-3 text-sm leading-relaxed text-muted">
+              메뉴와 예약문의를 앱에서 더 편하게
+            </p>
+
+            <div className="mt-4 flex flex-col items-start gap-4 sm:flex-row sm:items-center lg:flex-col lg:items-start">
+              {/* QR — PC 화면에서만 표시 */}
+              <div className="hidden shrink-0 md:block">
+                <Image
+                  src="/images/app-qr.png"
+                  alt="사색찬미한정식 앱 다운로드 QR 코드"
+                  width={160}
+                  height={160}
+                  className="h-40 w-40 rounded-lg border border-secondary bg-white p-1"
+                />
+                <p className="mt-2 text-xs text-muted">
+                  휴대폰 카메라로 스캔하세요
+                </p>
+              </div>
+
+              <div>
+                <a
+                  href="https://panksooungman-dot.github.io/sasaekchanmi-download/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-90 active:scale-[0.98]"
+                >
+                  앱 다운로드
+                </a>
+                <p className="mt-2 text-xs text-muted">
+                  Android 전용 · 약 59MB
+                </p>
+              </div>
+            </div>
+          </div>
+
+※ 이 프로젝트가 <Image> 를 안 쓰고 <img> 를 쓰면 아래로 바꿔라.
+  <img
+    src="/images/app-qr.png"
+    alt="사색찬미한정식 앱 다운로드 QR 코드"
+    width={160}
+    height={160}
+    className="h-40 w-40 rounded-lg border border-secondary bg-white p-1"
+  />
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+■ 3단계 : QR 이미지 확인
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+public/images/app-qr.png 가 있는지 확인해라.
+없으면 "app-qr.png 를 public/images/ 에 넣어주세요" 라고 나에게 알려라.
+네가 이미지를 임의로 만들거나 다른 파일로 대체하지 마라.
+
+public/logo.png 도 실제로 존재하는지 확인해서 알려줘라.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+■ 4단계 : 검증하고 보고
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1) git diff 로 바뀐 내용을 보여줘라. 정확히 2곳만 바뀌었는지 확인.
+
+2) 아래가 그대로인지 grep 으로 확인해라.
+   - 영업시간 문구
+   - 주소 "경기 파주시 광탄면 만장산로 363 1층"
+   - tel:0319458004
+   - pcmap.place.naver.com 링크
+   - blog.naver.com 링크
+   - 저작권 문구 "All rights reserved"
+
+3) npm run build 실행해서 통과하는지 확인해라.
+
+4) 최종 보고는 이 형식으로:
+   ✅ 수정한 파일: (경로)
+   ✅ 바뀐 곳: 2곳 (grid 칸수 / 모바일 앱 칸 추가)
+   ✅ 기존 문구 유지: 확인함
+   ✅ 빌드: 통과 / 실패
+   ⚠️ 확인 필요: (있으면)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+■ 참고 : 이 푸터는 10개 페이지가 공유한다
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+/, /about, /menu, /food, /space, /occasion,
+/location, /paju, /reservation, /review
+
+10개 페이지의 푸터 HTML이 완전히 동일한 것을 확인했다.
+푸터 컴포넌트 1개만 고치면 10개 페이지 전부 적용된다.
+페이지 파일을 개별로 수정하지 마라.
