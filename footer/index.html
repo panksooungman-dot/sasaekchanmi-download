@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>클로드 코드 프롬프트 — 복사용</title>
+<style>
+  :root{--ivory:#FBF7F0;--beige:#EBE2D4;--line:#D6CABA;
+        --brown:#4A3A2C;--brown-l:#8C7A69;--accent:#7A5C3E;}
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;padding:28px 20px 60px;background:var(--ivory);color:var(--brown);
+       font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;}
+  .wrap{max-width:860px;margin:0 auto}
+  h1{font-size:21px;font-weight:800;margin:0 0 6px;letter-spacing:-.3px}
+  .sub{font-size:13px;color:var(--brown-l);margin:0 0 22px;line-height:1.6}
+  .bar{display:flex;gap:10px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+  button{font:inherit;font-size:14px;font-weight:800;border:0;border-radius:6px;
+         padding:14px 22px;cursor:pointer;transition:.15s}
+  #copy{background:var(--accent);color:#fff;flex:1;min-width:200px}
+  #copy:active{transform:scale(.985);filter:brightness(.94)}
+  #copy.done{background:#3F7A4E}
+  #dl{background:#fff;color:var(--accent);border:1.5px solid var(--line)}
+  .meta{font-size:12px;color:var(--brown-l);margin-bottom:14px}
+  textarea{width:100%;height:520px;padding:18px;border:1.5px solid var(--line);
+           border-radius:6px;background:#fff;color:#2C2620;
+           font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Courier New",monospace;
+           font-size:12.5px;line-height:1.62;resize:vertical;white-space:pre;overflow-wrap:normal}
+  textarea:focus{outline:2px solid var(--accent);outline-offset:1px}
+  .tip{margin-top:18px;padding:14px 16px;background:rgba(235,226,212,.45);
+       border-left:3px solid var(--accent);border-radius:4px;
+       font-size:12.5px;line-height:1.75;color:var(--brown-l)}
+  .tip b{color:var(--brown)}
+  .warn{margin-top:12px;padding:13px 16px;background:#fff;border:1.5px solid #E3B7B0;
+        border-radius:4px;font-size:12.5px;line-height:1.7;color:#8A4B44}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>클로드 코드에 붙여넣을 프롬프트</h1>
+  <p class="sub">아래 버튼을 누르면 전체가 복사됩니다. 그대로 클로드 코드에 붙여넣으세요.</p>
+
+  <div class="bar">
+    <button id="copy">전체 복사</button>
+    <button id="dl">txt 파일로 받기</button>
+  </div>
+  <p class="meta" id="meta"></p>
+
+  <textarea id="ta" spellcheck="false" wrap="off"></textarea>
+
+  <div class="tip">
+    <b>붙여넣은 뒤에 하실 일</b><br>
+    1. 클로드 코드가 <b>0단계(현재 푸터 상태 보고)</b>를 하면 내용을 확인하세요.<br>
+    2. 그 다음 <b>2단계 수정</b>을 진행하면 <code>git diff</code> 로 바뀐 곳을 보여줍니다.<br>
+    3. <b>바뀐 곳이 2곳뿐인지</b> 확인하고 커밋하세요.
+  </div>
+
+  <div class="warn">
+    ⚠️ 먼저 <b>작업 브랜치</b>를 만드세요.<br>
+    <code>git checkout -b feature/app-download-footer</code><br>
+    문제가 생기면 브랜치를 버리면 원래대로 돌아옵니다.
+  </div>
+</div>
+
+<script>
+var PROMPT = "사색찬미한정식 홈페이지(Next.js) 푸터에 \"모바일 앱 다운로드\" 칸을 추가해줘.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n■ 0단계 : 먼저 조사 (수정하지 말고 보고만)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n1) 푸터 컴포넌트 파일을 찾아라.\n   grep -rl \"오시는 길\" components/ app/ src/ 2>/dev/null\n   결과가 여러 개면 가장 그럴듯한 것 1개만 골라라.\n\n2) 그 파일을 읽고 아래를 확인해서 나에게 보고해라.\n   - 파일 경로\n   - <Image> 를 쓰는지 <img> 를 쓰는지\n   - 푸터 영업시간 문구가 정확히 무엇인지\n   - grid 클래스가 정확히 무엇인지\n   - 로고 아래 소개 문구가 무엇인지\n   - 예약 버튼(네이버 예약하기 / 예약 문의)이 있는지\n\n   ※ 내가 알려준 값과 다르면 내 값을 따르지 말고\n     \"실제 파일은 이렇습니다\" 라고 알려줘라. 실제 파일이 우선이다.\n   ※ 이 보고를 한 뒤 잠깐 멈춰라.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n■ 1단계 : 절대 하면 안 되는 것\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n- 기존 문구·링크·숫자를 바꾸지 마라 (영업시간, 주소, 전화번호, 네이버 링크 3개).\n- 로고 이미지 설정을 바꾸지 마라.\n- 배경 구름 SVG 패턴을 바꾸지 마라.\n- 저작권 문구를 바꾸지 마라.\n- import 문을 바꾸지 마라.\n- 푸터 파일 1개만 수정한다. 다른 컴포넌트·페이지를 건드리지 마라.\n- 새 패키지를 설치하지 마라.\n- 커밋하지 마라. (내가 확인 후 직접 커밋한다)\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n■ 2단계 : 수정 — 딱 두 곳만\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n【수정 1】 grid 칸수\n\n아래 줄을 찾아서\n    <div className=\"grid gap-10 sm:grid-cols-2\">\n이렇게 바꾼다\n    <div className=\"grid gap-10 sm:grid-cols-2 lg:grid-cols-3\">\n\n※ sm:grid-cols-3 로 하지 마라. 태블릿 폭(640~1023px)에서 칸이 170px까지\n  좁아져 버튼이 두 줄로 깨진다. 반드시 lg: 를 쓴다. (실제 렌더링으로 확인함)\n\n\n【수정 2】 세 번째 칸 추가\n\n\"오시는 길\" 칸이 끝나는 </div> 바로 뒤, grid 컨테이너가 닫히기 전에\n아래 블록을 넣는다.\n\n          {/* ── 3. 모바일 앱 ── */}\n          <div className=\"sm:col-span-2 lg:col-span-1\">\n            <p className=\"text-sm font-semibold text-foreground\">모바일 앱</p>\n            <p className=\"mt-3 text-sm leading-relaxed text-muted\">\n              메뉴와 예약문의를 앱에서 더 편하게\n            </p>\n\n            <div className=\"mt-4 flex flex-col items-start gap-4 sm:flex-row sm:items-center lg:flex-col lg:items-start\">\n              {/* QR — PC 화면에서만 표시 */}\n              <div className=\"hidden shrink-0 md:block\">\n                <Image\n                  src=\"/images/app-qr.png\"\n                  alt=\"사색찬미한정식 앱 다운로드 QR 코드\"\n                  width={160}\n                  height={160}\n                  className=\"h-40 w-40 rounded-lg border border-secondary bg-white p-1\"\n                />\n                <p className=\"mt-2 text-xs text-muted\">\n                  휴대폰 카메라로 스캔하세요\n                </p>\n              </div>\n\n              <div>\n                <a\n                  href=\"https://panksooungman-dot.github.io/sasaekchanmi-download/\"\n                  target=\"_blank\"\n                  rel=\"noreferrer\"\n                  className=\"inline-flex items-center justify-center rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-90 active:scale-[0.98]\"\n                >\n                  앱 다운로드\n                </a>\n                <p className=\"mt-2 text-xs text-muted\">\n                  Android 전용 · 약 59MB\n                </p>\n              </div>\n            </div>\n          </div>\n\n※ 이 프로젝트가 <Image> 를 안 쓰고 <img> 를 쓰면 아래로 바꿔라.\n  <img\n    src=\"/images/app-qr.png\"\n    alt=\"사색찬미한정식 앱 다운로드 QR 코드\"\n    width={160}\n    height={160}\n    className=\"h-40 w-40 rounded-lg border border-secondary bg-white p-1\"\n  />\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n■ 3단계 : QR 이미지 확인\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\npublic/images/app-qr.png 가 있는지 확인해라.\n없으면 \"app-qr.png 를 public/images/ 에 넣어주세요\" 라고 나에게 알려라.\n네가 이미지를 임의로 만들거나 다른 파일로 대체하지 마라.\n\npublic/logo.png 도 실제로 존재하는지 확인해서 알려줘라.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n■ 4단계 : 검증하고 보고\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n1) git diff 로 바뀐 내용을 보여줘라. 정확히 2곳만 바뀌었는지 확인.\n\n2) 아래가 그대로인지 grep 으로 확인해라.\n   - 영업시간 문구\n   - 주소 \"경기 파주시 광탄면 만장산로 363 1층\"\n   - tel:0319458004\n   - pcmap.place.naver.com 링크\n   - blog.naver.com 링크\n   - 저작권 문구 \"All rights reserved\"\n\n3) npm run build 실행해서 통과하는지 확인해라.\n\n4) 최종 보고는 이 형식으로:\n   ✅ 수정한 파일: (경로)\n   ✅ 바뀐 곳: 2곳 (grid 칸수 / 모바일 앱 칸 추가)\n   ✅ 기존 문구 유지: 확인함\n   ✅ 빌드: 통과 / 실패\n   ⚠️ 확인 필요: (있으면)\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n■ 참고 : 이 푸터는 10개 페이지가 공유한다\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n/, /about, /menu, /food, /space, /occasion,\n/location, /paju, /reservation, /review\n\n10개 페이지의 푸터 HTML이 완전히 동일한 것을 확인했다.\n푸터 컴포넌트 1개만 고치면 10개 페이지 전부 적용된다.\n페이지 파일을 개별로 수정하지 마라.\n";
+var ta = document.getElementById('ta');
+var btn = document.getElementById('copy');
+var dl = document.getElementById('dl');
+var meta = document.getElementById('meta');
+
+ta.value = PROMPT;
+meta.textContent = '총 ' + PROMPT.length.toLocaleString() + '자 · ' + PROMPT.split('\n').length + '줄';
+
+function flash(msg){
+  var old = btn.textContent;
+  btn.textContent = msg;
+  btn.classList.add('done');
+  setTimeout(function(){ btn.textContent = old; btn.classList.remove('done'); }, 2000);
+}
+
+btn.addEventListener('click', function(){
+  // 최신 브라우저
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(PROMPT).then(function(){ flash('복사 완료!'); })
+    .catch(function(){ legacyCopy(); });
+  } else {
+    legacyCopy();
+  }
+});
+
+function legacyCopy(){
+  ta.focus();
+  ta.select();
+  ta.setSelectionRange(0, PROMPT.length);
+  var ok = false;
+  try { ok = document.execCommand('copy'); } catch(e){}
+  if (ok) { flash('복사 완료!'); }
+  else { flash('전체 선택됨 — Ctrl+C'); }
+}
+
+dl.addEventListener('click', function(){
+  var blob = new Blob([PROMPT], {type:'text/plain;charset=utf-8'});
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = '클로드코드_프롬프트.txt';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1500);
+});
+</script>
+</body>
+</html>
