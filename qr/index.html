@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>사색찬미한정식 · 앱 다운로드 QR 이미지</title>
+<style>
+  :root{
+    --ivory:#FBF7F0; --brown:#7A5C3E; --dark:#2C2620; --muted:#8A7E72; --line:#E0D6C8;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{
+    margin:0;background:var(--ivory);color:var(--dark);
+    font-family:"NanumSquareRound","Apple SD Gothic Neo","Malgun Gothic",-apple-system,sans-serif;
+    line-height:1.6;padding:0 20px 64px;
+  }
+  .wrap{max-width:960px;margin:0 auto}
+  header{border-bottom:2px solid var(--brown);padding:34px 0 20px;margin-bottom:30px}
+  h1{font-size:26px;margin:0 0 6px;letter-spacing:-.4px}
+  header p{margin:0;color:var(--muted);font-size:14px}
+
+  .hero{
+    background:#fff;border:1px solid var(--line);border-radius:16px;
+    padding:28px;margin-bottom:26px;text-align:center;
+  }
+  .hero img{width:250px;height:250px;border:1px solid var(--line);border-radius:12px;background:#fff}
+  .hero .url{
+    display:inline-block;margin-top:16px;padding:8px 14px;border-radius:8px;
+    background:#F3EDE3;color:var(--brown);font-size:13px;word-break:break-all;font-weight:700;
+  }
+  .hero p.sub{margin:12px 0 0;font-size:13px;color:var(--muted)}
+
+  h2{font-size:19px;margin:34px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px}
+  .item{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center}
+  .item .thumb{
+    width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;
+    border-radius:8px;margin-bottom:12px;overflow:hidden;
+    background:repeating-conic-gradient(#F0EBE3 0% 25%, #fff 0% 50%) 50%/16px 16px;
+    position:relative;
+  }
+  .item .thumb img{width:100%;height:100%;object-fit:contain;position:relative;z-index:1}
+  .item .name{font-size:14px;font-weight:700;margin:0 0 2px}
+  .item .size{font-size:12px;color:var(--muted);margin:0 0 12px}
+  a.btn{
+    display:inline-flex;align-items:center;justify-content:center;width:100%;
+    padding:11px 14px;border-radius:9px;text-decoration:none;font-size:14px;font-weight:700;
+    background:var(--brown);color:#fff;transition:.15s;
+  }
+  a.btn:hover{opacity:.9}
+  a.btn.ghost{background:#fff;color:var(--brown);border:1px solid var(--brown)}
+  a.btn.ghost:hover{background:#F5EFE6}
+
+  .note{
+    background:#F3EDE3;border-left:4px solid var(--brown);border-radius:8px;
+    padding:16px 18px;font-size:14px;margin:26px 0;
+  }
+  .note b{color:var(--brown)}
+  .note ul{margin:8px 0 0;padding-left:20px}
+  .note li{margin:5px 0}
+  .table{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px;background:#fff}
+  .table th,.table td{border:1px solid var(--line);padding:9px 11px;text-align:left}
+  .table th{background:#F5EFE6;font-weight:700;white-space:nowrap}
+  .table code{background:#F3EDE3;padding:1px 6px;border-radius:4px;font-size:12px}
+
+  footer{text-align:center;font-size:12px;color:var(--muted);padding-top:16px;margin-top:34px;border-top:1px solid var(--line)}
+  @media(max-width:520px){
+    h1{font-size:21px}
+    .hero img{width:200px;height:200px}
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .item{padding:10px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>앱 다운로드 QR 이미지</h1>
+    <p>사색찬미한정식 · 홈페이지 푸터 · 테이블 안내용</p>
+  </header>
+
+  <div class="hero">
+    <img src="1880.png" alt="사색찬미한정식 앱 다운로드 QR">
+    <div class="url">https://panksooungman-dot.github.io/sasaekchanmi-download/</div>
+    <p class="sub">스캔하면 앱 다운로드 안내 페이지로 이동합니다</p>
+  </div>
+
+  <div class="note">
+    <b>어떤 파일을 쓰면 되나요?</b>
+    <ul>
+      <li><b>홈페이지 푸터</b> → <code>160.png</code> (Footer.tsx 가 160×160 으로 표시)</li>
+      <li><b>인쇄·현수막</b> → <code>1880.png</code> (원본, 가장 선명)</li>
+      <li><b>배경 투명이 필요할 때</b> → <code>transparent-1800.png</code></li>
+      <li><b>테이블에 세울 때</b> → <code>print-a5.png</code> / <code>print-a5.pdf</code></li>
+    </ul>
+  </div>
+
+  <h2>PNG 파일 (6종)</h2>
+  <div class="grid">
+
+    <div class="item">
+      <div class="thumb"><img src="1880.png" alt="QR 원본 1880"></div>
+      <p class="name">원본 · 아이보리</p>
+      <p class="size">1880 × 1880 · 19KB</p>
+      <a class="btn" href="1880.png" download="QR_푸터용_1880.png">PNG 저장</a>
+    </div>
+
+    <div class="item">
+      <div class="thumb"><img src="512.png" alt="QR 512"></div>
+      <p class="name">512px</p>
+      <p class="size">512 × 512 · 55KB</p>
+      <a class="btn" href="512.png" download="QR_512.png">PNG 저장</a>
+    </div>
+
+    <div class="item">
+      <div class="thumb"><img src="320.png" alt="QR 320"></div>
+      <p class="name">320px</p>
+      <p class="size">320 × 320 · 50KB</p>
+      <a class="btn" href="320.png" download="QR_320.png">PNG 저장</a>
+    </div>
+
+    <div class="item">
+      <div class="thumb"><img src="160.png" alt="QR 160 푸터용"></div>
+      <p class="name">160px · 푸터용</p>
+      <p class="size">160 × 160 · 32KB</p>
+      <a class="btn" href="160.png" download="QR_160.png">PNG 저장</a>
+    </div>
+
+    <div class="item">
+      <div class="thumb"><img src="transparent-1800.png" alt="QR 투명 배경 1800"></div>
+      <p class="name">투명 배경 · 원본</p>
+      <p class="size">1800 × 1800 · 18KB</p>
+      <a class="btn" href="transparent-1800.png" download="QR_투명배경_1800.png">PNG 저장</a>
+    </div>
+
+    <div class="item">
+      <div class="thumb"><img src="transparent-512.png" alt="QR 투명 배경 512"></div>
+      <p class="name">투명 배경 · 512px</p>
+      <p class="size">512 × 512 · 54KB</p>
+      <a class="btn" href="transparent-512.png" download="QR_투명배경_512.png">PNG 저장</a>
+    </div>
+
+  </div>
+
+  <h2>인쇄용 (A5)</h2>
+  <div class="grid">
+    <div class="item">
+      <div class="thumb"><img src="print-a5.png" alt="QR 인쇄용 A5 PNG"></div>
+      <p class="name">A5 인쇄용 PNG</p>
+      <p class="size">1748 × 2480 · 117KB</p>
+      <a class="btn" href="print-a5.png" download="QR_인쇄용_A5.png">PNG 저장</a>
+    </div>
+    <div class="item">
+      <div class="thumb"><img src="print-a5.png" alt="QR 인쇄용 A5 PDF"></div>
+      <p class="name">A5 인쇄용 PDF</p>
+      <p class="size">인쇄소 전달용</p>
+      <a class="btn ghost" href="print-a5.pdf" download="QR_인쇄용_A5.pdf">PDF 저장</a>
+    </div>
+  </div>
+
+  <h2>한 번에 받기</h2>
+  <div class="grid">
+    <div class="item" style="grid-column:1/-1">
+      <p class="name" style="font-size:16px">QR 이미지 전체 (7개 파일)</p>
+      <p class="size">PNG 6종 + 인쇄용 PDF · 288KB</p>
+      <a class="btn" href="qr-images.zip" download>압축파일 저장</a>
+    </div>
+  </div>
+
+  <h2>파일 정보</h2>
+  <table class="table">
+    <tr><th>파일</th><th>크기</th><th>용도</th></tr>
+    <tr><td><code>1880.png</code></td><td>1880px</td><td>원본 · 인쇄·현수막</td></tr>
+    <tr><td><code>512.png</code></td><td>512px</td><td>일반 웹 사용</td></tr>
+    <tr><td><code>320.png</code></td><td>320px</td><td>작은 배너</td></tr>
+    <tr><td><code>160.png</code></td><td>160px</td><td>홈페이지 푸터 (Footer.tsx)</td></tr>
+    <tr><td><code>transparent-1800.png</code></td><td>1800px</td><td>배경색 있는 곳에 올릴 때</td></tr>
+    <tr><td><code>transparent-512.png</code></td><td>512px</td><td>배경색 있는 곳 (작게)</td></tr>
+    <tr><td><code>print-a5.png / .pdf</code></td><td>A5</td><td>테이블·카운터 인쇄</td></tr>
+  </table>
+
+  <div class="note" style="margin-top:26px">
+    <b>QR 이 가리키는 주소</b><br>
+    <code>https://panksooungman-dot.github.io/sasaekchanmi-download/</code><br>
+    모든 크기에서 이 주소로 정상 인식되는 것을 확인했습니다. 주소를 바꾸면 QR 도 새로 만들어야 합니다.
+  </div>
+
+  <footer>
+    사색찬미한정식 · 경기 파주시 광탄면 만장산로 363 1층 · 031-945-8004
+  </footer>
+
+</div>
+</body>
+</html>
